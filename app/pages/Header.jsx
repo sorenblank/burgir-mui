@@ -1,7 +1,11 @@
 import "../globals.css";
 import { Box, Typography, Container } from "@mui/material";
 import { useState } from "react";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
+import Button from "../components/Button";
 
+import { navigation } from "../lib/constants";
+import Toggle from "../components/Toggle";
 
 const Header = () => {
   // Initializing router and state for navigation toggle
@@ -39,7 +43,7 @@ const Header = () => {
         top: 0,
         width: "100%",
         zIndex: 50,
-        py: 1, // 14px, adjust as needed
+        py: "14px",
         bgcolor: "#fef1df",
         boxShadow: "0 2px 6px hsla(0, 0%, 0%, 0.1)"
       }}>
@@ -47,21 +51,13 @@ const Header = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          gap: 20,
-          '@media (min-width:640px)': {
-            mx: "auto",
-            width: "100%",
-            maxWidth: "550px"
-          },
-          '@media (min-width:768px)': {
-            maxWidth: "720px"
-          },
-          '@media (min-width:1024px)': {
-            maxWidth: "960px"
-          },
-          '@media (min-width:1280px)': {
-            maxWidth: "1200px"
-          }
+          gap: "20px",
+
+          px: "15px",
+          mx: {xs: "auto"},
+          width: {xs: "100%"},
+          maxWidth: {sm:"720px", md: "960px", lg: "1200px"},
+
         }}>
 
           <Typography
@@ -72,12 +68,12 @@ const Header = () => {
               fontSize: 28,
               fontWeight: 'bold',
               letterSpacing: -2,
-              color:  'var(--saffron)',
+              color: '#0e0e12',
               '& a': {
                 textDecoration: 'none',
                 color: 'inherit',
                 '& span': {
-                  color: 'var(--saffron)',
+                  color: '#ff9d2e',
                   display: 'inline-block'
                 }
               }
@@ -85,6 +81,70 @@ const Header = () => {
           >
             <a href="/">Burgir<span>.</span></a>
           </Typography>
+
+          <Box
+            component="nav"
+            sx={{
+              display: { xs: openNavigation ? 'flex' : 'none', md: 'flex' },
+              position: { xs: 'fixed', md: 'static' },
+              top: { xs: '4.5rem' },
+              left: 0,
+              right: 0,
+              bottom: 0,
+              bgcolor: { xs: 'white', md: 'transparent' },
+              zIndex: 20,
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: 'center',
+              justifyContent: 'center',
+              ml: 'auto',
+              gap: { lg: '5px' }
+            }}
+          >
+            {navigation.map((item) => (
+              <Box
+                component="a"
+                key={item.id}
+                href={item.url}
+                onClick={handleClick}
+                sx={{
+                  display: { lg: item.onlyMobile ? 'none' : 'block' },
+                  fontFamily: 'Rubik',
+                  fontSize: { xs: '2xl', lg: '15px' },
+                  color: '#0e0e12',
+                  fontWeight: 'medium',
+                  px: '10px',
+                  py: '15px',
+                  textDecoration: 'none',
+                  '&:hover': {
+                    color: '#ff8d29',
+                  },
+                }}
+              >
+                {item.title}
+              </Box>
+            ))}
+          </Box>
+
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: '5px',
+              alignItems: 'center',
+              m: 0,
+            }}
+          >
+            <Button
+              sx={{
+                display: { xs: 'none', sm: 'block' },
+              }}
+              orange
+            >
+              Reservation
+            </Button>
+
+            <Toggle clicked={openNavigation} onClick={toggleNavigation} />
+          </Box>
 
         </Container>
       </Box>
