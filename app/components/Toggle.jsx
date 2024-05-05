@@ -5,12 +5,12 @@ const Toggle = ({ clicked, onClick }) => {
     <Box
       component="button"
       sx={{
-        display: {xs: 'grid', md: 'none'},
+        display: { xs: 'grid', lg:'none'},
         gap: '4px',
         cursor: 'pointer',
         border: 'none',
         background: 'none',
-        height: '100%',
+        minheight: '100%',
       }}
       onClick={onClick}
     >

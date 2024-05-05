@@ -43,31 +43,30 @@ const Header = () => {
         top: 0,
         width: "100%",
         zIndex: 50,
-        py: "14px",
+        py: "15px",
         bgcolor: "#fef1df",
         boxShadow: "0 2px 6px hsla(0, 0%, 0%, 0.1)"
       }}>
-        <Container component="div" sx={{
+        <Container disableGutters component="div" sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           gap: "20px",
-
           px: "15px",
-          mx: {xs: "auto"},
-          width: {xs: "100%"},
-          maxWidth: {sm:"720px", md: "960px", lg: "1200px"},
+          mx: "auto",
+          width: {sm: "100%"},
+          maxWidth: {sm:"550px", md: "720px", lg: "960px", xl:"1200px"},
 
         }}>
 
           <Typography
-            variant="h6"
+            variant="h1"
             component="h1"
             sx={{
               fontFamily: 'Rubik',
               fontSize: 28,
               fontWeight: 'bold',
-              letterSpacing: -2,
+              letterSpacing: "-2px",
               color: '#0e0e12',
               '& a': {
                 textDecoration: 'none',
@@ -85,21 +84,34 @@ const Header = () => {
           <Box
             component="nav"
             sx={{
-              display: { xs: openNavigation ? 'flex' : 'none', md: 'flex' },
-              position: { xs: 'fixed', md: 'static' },
-              top: { xs: '4.5rem' },
+              display: { xs: openNavigation ? 'flex' : 'none', lg: 'flex' },
+              position: { xs: 'fixed', lg: 'static' },
+              top: '4.5rem',
               left: 0,
               right: 0,
               bottom: 0,
-              bgcolor: { xs: 'white', md: 'transparent' },
-              zIndex: 20,
+              bgcolor: { xs: 'white', lg: 'transparent' },
               flexDirection: { xs: 'column', md: 'row' },
               alignItems: 'center',
               justifyContent: 'center',
               ml: 'auto',
-              gap: { lg: '5px' }
             }}
           >
+            <Box
+              component="div"
+              sx={{
+                position: 'relative',
+                zIndex: 20,
+                display: 'flex',
+                flexDirection: {xs:'column',lg:'row'},
+                gap: {lg:'5px'},
+                alginItems: 'center',
+                justifyContent: 'center',
+                margin: 'auto',
+        
+              }}>
+
+            
             {navigation.map((item) => (
               <Box
                 component="a"
@@ -107,9 +119,10 @@ const Header = () => {
                 href={item.url}
                 onClick={handleClick}
                 sx={{
+                  mx: { xs: 'auto', lg: 0 },
                   display: { lg: item.onlyMobile ? 'none' : 'block' },
                   fontFamily: 'Rubik',
-                  fontSize: { xs: '2xl', lg: '15px' },
+                  fontSize: { xs: '24px', lg: '15px' },
                   color: '#0e0e12',
                   fontWeight: 'medium',
                   px: '10px',
@@ -123,6 +136,7 @@ const Header = () => {
                 {item.title}
               </Box>
             ))}
+            </Box>
           </Box>
 
           <Box
