@@ -1,4 +1,4 @@
-  {
+{
   "name": "burgir-mui",
   "version": "0.1.0",
   "private": true,
@@ -15,6 +15,7 @@
     "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^5.2.1",
     "scroll-lock": "^2.1.5"
   },
   "devDependencies": {

@@ -100,7 +100,67 @@ const Hero = () => {
 
         {/* Hero Image Below */}
 
-        
+        <Box
+        component="figure"
+        sx={{
+          display: { xs: 'none', md: 'block' },
+          position: 'absolute',
+          top: { xs: 'calc(50% + 86px)', lg: 'auto' },
+          transform: { xs: 'translateY(-50%)', lg: 'translateY(0)' },
+          right: '50px',
+          maxWidth: { xs: '40%', lg: '45%' },
+          aspectRatio: '1 / 0.9',
+          bottom: { lg: 0 },
+        }}
+      >
+        <Box
+          component="img"
+          src={hero.bannerImage}
+          width={820}
+          height={716}
+          alt="Burgir Bg"
+          sx={{
+            maxWidth: '100%',
+            height: 'auto',
+            transform: {
+              xs: 'none',
+              md: 'scale(1.4) translateX(44px) translateY(-20px)',
+            },
+          }}
+        />
+        <Box
+          component="img"
+          src={hero.burgerImage}
+          width={700}
+          height={637}
+          alt="Burgir"
+          sx={{
+            maxWidth: '100%',
+            height: 'auto',
+            position: 'absolute',
+            left: '30px',
+            bottom: 0,
+
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          display: { xs: 'none', md: 'block' },
+          position: 'absolute',
+          right: 0,
+          bottom: '-2px',
+          width: '100%',
+          height: '100%',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'contain',
+          backgroundPosition: 'right bottom',
+          pointerEvents: 'none',
+          zIndex: -1,
+          backgroundImage: `url(${hero.bgShape})`,
+        }}
+      />
 
 
       </Container>

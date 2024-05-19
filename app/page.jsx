@@ -39,10 +39,10 @@ export default function Home() {
       <About />
       <Menu />
       <CTA />
-      <Delivery />
+      {/* <Delivery />
       <Reviews />
       <Banner />
-      <Blog />
+      <Blog /> */}
       <Reservation />
       <Footer/>
     </div>

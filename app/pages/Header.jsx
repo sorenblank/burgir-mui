@@ -86,7 +86,7 @@ const Header = () => {
             sx={{
               display: { xs: openNavigation ? 'flex' : 'none', lg: 'flex' },
               position: { xs: 'fixed', lg: 'static' },
-              top: '4.5rem',
+              top: '3.9rem',
               left: 0,
               right: 0,
               bottom: 0,
